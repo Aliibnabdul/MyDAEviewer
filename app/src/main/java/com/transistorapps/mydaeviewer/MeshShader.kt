@@ -168,10 +168,7 @@ class MeshShader constructor(context: Context) {
         GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS, params, 0)
         if (params[0] == GLES20.GL_FALSE) {
             throw RuntimeException(
-                """
-                    Compilation of shader '$filename' failed:
-                    ${GLES20.glGetShaderInfoLog(shader)}
-                    """.trimIndent()
+                "Compilation of shader $filename failed:\n" + GLES20.glGetShaderInfoLog(shader)
             )
         }
         return shader
